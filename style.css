@@ -105,18 +105,18 @@ body {
   }
   
   .copyKeyBtn {
-    background-color: #28a745; /* green button */
+    background-color: #e74c3c;
     border: none;
-    padding: 15px 30px; /* increased padding for better spacing */
-    color: #fff; /* white text */
-    font-size: 16px; /* increased font size for better readability */
-    border-radius: 5px; /* rounded corners */
+    padding: 10px 20px;
+    color: #fff;
+    font-size: 14px;
+    border-radius: 5px;
     cursor: pointer;
-  }
-  
-  .copyKeyBtn:hover {
-    background-color: #218838; /* darker green on hover */
-  }
+}
+
+.copyKeyBtn:hover {
+    background-color: #e94533;
+}
   
   .footer {
     margin-top: 30px; /* increased margin for better spacing */
