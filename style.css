@@ -112,11 +112,11 @@ body {
     font-size: 14px;
     border-radius: 5px;
     cursor: pointer;
-}
-
-.copyKeyBtn:hover {
+  }
+  
+  .copyKeyBtn:hover {
     background-color: #ea3a26;
-}
+  }
   
   .footer {
     margin-top: 30px; /* increased margin for better spacing */
@@ -132,10 +132,10 @@ body {
   #telegramChannelBtn {
     background-color: green;
   }
-
-/* From Uiverse.io by satyamchaudharydev */ 
-/* inspired from this svgbackgrounds.com/ */
-.buttonvip {
+  
+  /* From Uiverse.io by satyamchaudharydev */ 
+  /* inspired from this svgbackgrounds.com/ */
+  .buttonvip {
     width: fit-content;
     display: flex;
     padding: 0.8em 1.1em;
@@ -179,8 +179,9 @@ body {
     fill: #f09f33;
     transition: 0.3s ease;
   }
-
+  
   .buttonvip a {
     color: #fff;
     text-decoration: none;
   }
+    
