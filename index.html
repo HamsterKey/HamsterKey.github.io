@@ -3,106 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>کلیدساز همستر</title>
+    <title>Game Promo Code Generator</title>
     <link rel="stylesheet" href="style.css">
+    <script src="//api.shareus.io/verify.js" defer></script>
+    <script type="module" src="https://injectshrslinkblog.com/popup/script.js"> </script>
 </head>
 <body>
-
-    <style>
-        /* Style the popup container */
-        .popup-container {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          background-color: rgba(0, 0, 0, 0.5);
-        }
-    
-        /* Style the popup content */
-        .popup-content {
-          background-color: #222222;
-          padding: 20px;
-          border-radius: 10px;
-          box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-          width: 300px;
-          text-align: center;
-        }
-    
-        /* Style the close button */
-        .close-btn {
-          background-color: #ccc;
-          color: #333;
-          border: none;
-          padding: 10px 20px;
-          font-size: 16px;
-          cursor: pointer;
-        }
-    
-        .close-btn:hover {
-          background-color: #aaa;
-        }
-    
-        /* Style the link button */
-        .link-btn {
-          background-color: #007bff;
-          color: #fff;
-          border: none;
-          padding: 10px 20px;
-          font-size: 16px;
-          cursor: pointer;
-        }
-    
-        .link-btn:hover {
-          background-color: #0056b3;
-        }
-      </style>
-        </head>
-        <body>
-          <!-- The popup container -->
-          <div class="popup-container" style="display: none;">
-            <!-- The popup content -->
-            <div class="popup-content">
-              <h2>توجه</h2>
-              <p>برای دریافت اشتراک نامحدود<br>و همچنین جلوگیری از تداخل کد<br>در کانال تلگرام اسپانسر عضو بشید</p><p>(اگه عضو شدید این پیام رو نادیده بگیرید)</p><br>
-              <!-- The close button -->
-              <button class="close-btn" onclick="document.querySelector('.popup-container').style.display = 'none';">انصراف</button>
-              <!-- The link button -->
-              <a href="https://t.me/AkhbarHamster/599" target="_blank">
-                <button class="link-btn">عضویت در کانال</button>
-              </a>
-            </div>
-          </div>
-        
-          <script>
-            // Show the popup when the page loads
-            window.onload = () => {
-              document.querySelector('.popup-container').style.display = 'flex';
-            };
-          </script>
-
     <div class="container">
         <h1>کلیدساز همستر</h1>
         <div class="form-group">
             <label for="gameSelect">انتخاب بازی</label>
             <select id="gameSelect">
-                <option value="1">Riding Extreme 3D | دوچرخه</option>
+                <option value="1">Riding Extreme | دوچرخه</option>
                 <option value="2">Chain Cube 2048 | مکعب زنجیره ای</option>
                 <option value="3">My Clone Army | ارتش کلون</option>
                 <option value="4">Train Miner | معدنچی قطار</option>
+                <option value="5">MergeAway | ادغام</option>
+
             </select>
         </div>
         <div class="form-group">
-            <label id="keyCountLabel" for="keyCountSelect">:تعداد کلید ها</label>
+            <label id="keyCountLabel" for="keyCountSelect">تعداد کلید ها</label>
             <select id="keyCountSelect">
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
                 <option value="4">4</option>
-                <option value="5">5</option>
+                
             </select>
         </div>
         <button id="startBtn">ایجاد کلید</button>
@@ -111,28 +38,27 @@
                 <div id="progressBar"></div>
             </div>
             <div id="progressText">0%</div>
-            <div id="progressLog">... درحال اتصال به سرور</div>
+            <div id="progressLog">...درحال اتصال به سرور</div>
         </div>
         <div id="keyContainer" class="hidden">
-            <h3 id="generatedKeysTitle" class="hidden">:کلید های ساخته شده</h3>
+            <h3 id="generatedKeysTitle" class="hidden">کلید های ایجاد شده</h3>
             <div id="keysList"></div>
-            <button id="copyAllBtn" class="hidden">کپی تمامی کلید ها</button><br><br>
+            <button id="copyAllBtn" class="hidden">کپی تمامی کلید ها</button>
             <div id="copyStatus" class="hidden">!کپی شد</div>
-            <button id="generateMoreBtn">ساخت کلید های دیگر</button>
+            <button id="generateMoreBtn">ایجاد کلید های دیگر</button>
         </div>
         <div class="footer">
             <a href="https://t.me/Airdrops_GP" target="_blank">
                 <button class="link-btn">گروه پرسش و پاسخ</button>
               </a> <br><br>
-            <p>در صورت عدم عضویت در کانال اسپانسر، سایت پس از مدتی برای شما مسدود می شود<br>برای دریافت اشتراک نامحدود، با دکمه زیر وارد کانال بشید</p>
-            
+            <p>درصورت عدم عضویت در کانال اسپانسر ممکن است<br>سایت پس از مدتی برای شما متوقف شود</p>
             <button class="buttonvip">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 24">
                   <path d="m18 0 8 12 10-8-4 20H4L0 4l10 8 8-12z"></path>
                 </svg>
                 <a href="https://t.me/AkhbarHamster/599" target="_blank">عضویت در کانال و دریافت اشتراک ویژه</a>
               </button>
-
+            
         </div>
     </div>
     <script src="script.js"></script>
