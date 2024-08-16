@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', () => {
     const EVENTS_DELAY = 18000;
     const MAX_KEYS_PER_GAME_PER_DAY = 10;
@@ -28,6 +27,11 @@ document.addEventListener('DOMContentLoaded', () => {
             name: 'MergeAway',
             appToken: '8d1cc2ad-e097-4b86-90ef-7a27e19fb833',
             promoId: 'dc128d28-c45b-411c-98ff-ac7726fbaea4',
+        },
+        6: {
+    name: 'Twerk Race 3D',
+    appToken: '61308365-9d16-4040-8bb0-2f4a4c69074c',
+    promoId: '61308365-9d16-4040-8bb0-2f4a4c69074c'
         }
     };
 
@@ -150,7 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const storedData = JSON.parse(localStorage.getItem(storageKey));
 
         if (storedData.count + keyCount > MAX_KEYS_PER_GAME_PER_DAY) {
-            alert(`اعتبار باقی مانده: ${MAX_KEYS_PER_GAME_PER_DAY - storedData.count} کلید برای بازی ${game.name} امروز. فردا باز هم میتوانید بسازید`);
+            alert(`You can generate only ${MAX_KEYS_PER_GAME_PER_DAY - storedData.count} more keys for ${game.name} today.`);
             previousKeysList.innerHTML = storedData.keys.map(key =>
                 `<div class="key-item">
                     <input type="text" value="${key}" readonly>
@@ -160,11 +164,11 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        keyCountLabel.innerText = `تعداد کلید ها ${keyCount}`;
+        keyCountLabel.innerText = `تعداد کلیدها ${keyCount}`;
 
         progressBar.style.width = '0%';
         progressText.innerText = '0%';
-        progressLog.innerText = '...درحال اتصال به سرور بازی \n لطفا صبور باشید';
+        progressLog.innerText = '...درحال اتصال به سرور \n لطفا صبر کنید';
         progressContainer.classList.remove('hidden');
         keyContainer.classList.add('hidden');
         generatedKeysTitle.classList.add('hidden');
@@ -197,7 +201,7 @@ document.addEventListener('DOMContentLoaded', () => {
             for (let i = 0; i < 11; i++) {
                 await sleep(EVENTS_DELAY * delayRandom());
                 const hasCode = await emulateProgress(clientToken, game.promoId);
-                updateProgress(7 / keyCount, '...درحال استخراج');
+                updateProgress(7 / keyCount, 'Emulating progress...');
                 if (hasCode) {
                     break;
                 }
@@ -219,7 +223,7 @@ document.addEventListener('DOMContentLoaded', () => {
             keysList.innerHTML = keys.filter(key => key).map(key =>
                 `<div class="key-item">
                     <input type="text" value="${key}" readonly>
-                    <button class="copyKeyBtn" data-key="${key}">کپی</button>
+                    <button class="copyKeyBtn" data-key="${key}">Copy Key</button>
                 </div>`
             ).join('');
             copyAllBtn.classList.remove('hidden');
@@ -227,7 +231,7 @@ document.addEventListener('DOMContentLoaded', () => {
             keysList.innerHTML =
                 `<div class="key-item">
                     <input type="text" value="${keys[0]}" readonly>
-                    <button class="copyKeyBtn" data-key="${keys[0]}">کپی</button>
+                    <button class="copyKeyBtn" data-key="${keys[0]}">Copy Key</button>
                 </div>`;
         }
 
