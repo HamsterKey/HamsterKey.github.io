@@ -4,14 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>کلیدساز همستر</title>
+    <title>ساخت کلید</title>
     <link rel="stylesheet" href="style.css">
-    <script src="//api.shareus.io/verify.js" defer></script>
-    <script type="module" src="https://injectshrslinkblog.com/popup/script.js"> </script>
 </head>
 <body>
     <div class="container">
-        <h1>کلیدساز همستر</h1>
+        <h1>کلیدساز همستر</h1><br><br>
         <div class="form-group">
             <label for="gameSelect">انتخاب بازی</label>
             <select id="gameSelect">
@@ -31,6 +29,7 @@
                 <option value="2">2</option>
                 <option value="3">3</option>
                 <option value="4">4</option>
+                <option value="8">8</option>
                 
             </select>
         </div>
@@ -43,18 +42,26 @@
             <div id="progressLog">...درحال اتصال به سرور</div>
         </div>
         <div id="keyContainer" class="hidden">
-            <h3 id="generatedKeysTitle" class="hidden">کلید های ایجاد شده</h3>
+            <h3 id="generatedKeysTitle" class="hidden">کلیدهای ایجاد شده</h3>
             <div id="keysList"></div>
-            <button id="copyAllBtn" class="hidden">کپی تمامی کلید ها</button>
+            <button id="copyAllBtn" class="hidden">کپی تمامی کلیدها</button>
             <div id="copyStatus" class="hidden">!کپی شد</div>
-            <button id="generateMoreBtn">ایجاد کلید های دیگر</button>
+            <button id="generateMoreBtn">ایجاد کلیدهای دیگر</button>
+        </div><br><br>
+        <div class="mycodes">
+            <button id="ShowKeysBtn">کلید های ساخته شده قبلی</button>
+            <div id="generatedCodesContainer" style="display:none;">
+                <h3>Today's Generated Codes:</h3>
+                <ul id="generatedCodesList"></ul>
+            </div>
+
         </div>
         <div class="footer">
             <a href="https://t.me/Airdrops_GP" target="_blank">
                 <button class="link-btn">گروه پرسش و پاسخ</button>
               </a> <br><br>
-              <small style="color: rgb(187, 187, 187);">در صورت عدم عضویت در کانال اسپانسر<br> سایت پس از مدتی برای شما مسدود می شود<br>برای دریافت اشتراک نامحدود، با دکمه زیر وارد کانال بشید</small>
-            
+              <small style="color: rgb(210, 210, 210);">در صورت عدم عضویت در کانال اسپانسر، سایت پس از مدتی برای شما مسدود می شود<br>برای دریافت اشتراک نامحدود، با دکمه زیر وارد کانال بشید</small>
+            <br><br>
             <button class="buttonvip">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 24">
                   <path d="m18 0 8 12 10-8-4 20H4L0 4l10 8 8-12z"></path>
