@@ -104,17 +104,17 @@ button:hover {
 }
 
 .copyKeyBtn {
-  background-color: #28a745;
+  background-color: #e74c3c;
   border: none;
   padding: 10px 20px;
-  color: white;
+  color: #fff;
   font-size: 14px;
   border-radius: 5px;
   cursor: pointer;
 }
 
 .copyKeyBtn:hover {
-  background-color: #218838;
+  background-color: #ea3a26;
 }
 
 .footer {
