@@ -1,6 +1,6 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #333;
+  background-color: #2f2f2f;
   color: #fff;
   display: flex;
   justify-content: center;
@@ -10,7 +10,7 @@ body {
 }
 
 .container {
-  background: #444;
+  background: #333;
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
   padding: 20px;
@@ -21,6 +21,7 @@ body {
 
 h1 {
   margin-bottom: 20px;
+  color: #66d9ef;
 }
 
 .form-group {
@@ -31,6 +32,7 @@ label {
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
+  color: #999;
 }
 
 select {
@@ -38,8 +40,10 @@ select {
   padding: 10px;
   font-size: 14px;
   margin-bottom: 15px;
-  background-color: #555;
+  background-color: #444;
   color: #fff;
+  border: none;
+  border-radius: 5px;
 }
 
 button {
@@ -79,6 +83,7 @@ button:hover {
 #progressText {
   margin-top: 10px;
   font-weight: bold;
+  color: #999;
 }
 
 .key-item {
@@ -91,15 +96,15 @@ button:hover {
   flex: 1;
   padding: 10px;
   font-size: 14px;
-  border: 1px solid #666;
+  border: 1px solid #555;
   border-radius: 5px;
   margin-right: 10px;
-  background-color: #555;
+  background-color: #444;
   color: #fff;
 }
 
 .copyKeyBtn {
-  background-color: #e74c3c;
+  background-color: #28a745;
   border: none;
   padding: 10px 20px;
   color: white;
@@ -109,12 +114,13 @@ button:hover {
 }
 
 .copyKeyBtn:hover {
-  background-color: #ea3a26;
+  background-color: #218838;
 }
 
 .footer {
   margin-top: 20px;
   font-size: 14px;
+  color: #999;
 }
 
 #copyStatus {
@@ -124,6 +130,13 @@ button:hover {
 
 #telegramChannelBtn{
   background-color: green;
+}
+
+#countdownContainer {
+  display: none;
+  font-size: 1.05em;
+  color: #ff0000;
+  margin: 10px 0;
 }
 
 /* From Uiverse.io by satyamchaudharydev */ 
