@@ -1,84 +1,134 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ایجاد کلید</title>
+    <title>کلیدساز همستر</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
 </head>
 <body>
+
+    <style>
+        /* Style the popup container */
+        .popup-container {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: rgba(0, 0, 0, 0.5);
+        }
+    
+        /* Style the popup content */
+        .popup-content {
+          background-color: #222222;
+          padding: 20px;
+          border-radius: 10px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+          width: 300px;
+          text-align: center;
+        }
+    
+        /* Style the close button */
+        .close-btn {
+          background-color: #ccc;
+          color: #333;
+          border: none;
+          padding: 10px 20px;
+          font-size: 16px;
+          cursor: pointer;
+        }
+    
+        .close-btn:hover {
+          background-color: #aaa;
+        }
+    
+        /* Style the link button */
+        .link-btn {
+          background-color: #007bff;
+          color: #fff;
+          border: none;
+          padding: 10px 20px;
+          font-size: 16px;
+          cursor: pointer;
+        }
+    
+        .link-btn:hover {
+          background-color: #0056b3;
+        }
+      </style>
+        </head>
+        <body>
+          <!-- The popup container -->
+          <div class="popup-container" style="display: none;">
+            <!-- The popup content -->
+            <div class="popup-content">
+              <h2>توجه</h2>
+              <p>برای دریافت اشتراک نامحدود<br>و همچنین جلوگیری از تداخل کد<br>در کانال تلگرام اسپانسر عضو بشید</p><br>
+              <!-- The close button -->
+              <button class="close-btn" onclick="document.querySelector('.popup-container').style.display = 'none';">انصراف</button>
+              <!-- The link button -->
+              <a href="https://t.me/AkhbarHamster/599" target="_blank">
+                <button class="link-btn">عضویت در کانال</button>
+              </a>
+            </div>
+          </div>
+        
+          <script>
+            // Show the popup when the page loads
+            window.onload = () => {
+              document.querySelector('.popup-container').style.display = 'flex';
+            };
+          </script>
+
     <div class="container">
         <h1>کلیدساز همستر</h1>
         <div class="form-group">
             <label for="gameSelect">انتخاب بازی</label>
             <select id="gameSelect">
-                <option value="1">Riding Extreme 3D | دوچرخه</option>
-                <option value="2">Chain Cube 2048 | مکعب زنجیره ای</option>
-                <option value="3">My Clone Army | ارتش کلون</option>
-                <option value="4">Train Miner | معدنچی قطار</option>
-                <option value="5">MergeAway | ادغام</option>
-                <option value="6">Twerk Race | مسابقه</option>
-                <option value="7">Polysphere | پلی اسفیر</option>
-                <option value="8">Mow and Trim | چمن زنی</option>
-                <option value="9">Mud Racing | مسابقه گل و لای</option>
-
+              <option value="1">Riding Extreme 3D | دوچرخه</option>
+              <option value="2">Chain Cube 2048 | مکعب زنجیره ای</option>
+              <option value="3">My Clone Army | ارتش کلون</option>
+              <option value="4">Train Miner | معدنچی قطار</option>
+              <option value="5">MergeAway | ادغام</option>
+              <option value="6">Twerk Race | مسابقه</option>
+              <option value="7">Polysphere | پلی اسفیر</option>
             </select>
         </div>
-
         <div class="form-group">
-            <label id="keyCountLabel" for="keyCountSelect">تعداد کلید</label>
+            <label id="keyCountLabel" for="keyCountSelect">:تعداد کلید ها</label>
             <select id="keyCountSelect">
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
                 <option value="4">4</option>
                 <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                
             </select>
         </div>
         <button id="startBtn">ایجاد کلید</button>
-        
         <div id="progressContainer" class="hidden">
             <div class="progress-bar">
                 <div id="progressBar"></div>
             </div>
             <div id="progressText">0%</div>
-            <div id="progressLog">...درحال اتصال به سرور</div>
-            <div id="countdownContainer">
-            <p>درخواست بعدی <span id="countdownTimer"></span> ثانیه دیگر ارسال می شود </p>
-            </div>
+            <div id="progressLog">... درحال اتصال به سرور</div>
         </div>
         <div id="keyContainer" class="hidden">
-            <h3 id="generatedKeysTitle" class="hidden">کلید های ایجاد شده</h3>
+            <h3 id="generatedKeysTitle" class="hidden">:کلید های ساخته شده</h3>
             <div id="keysList"></div>
-            <button id="copyAllBtn" class="hidden">کپی تمامی کلیدها</button>
+            <button id="copyAllBtn" class="hidden">کپی تمامی کلید ها</button><br><br>
             <div id="copyStatus" class="hidden">!کپی شد</div>
-            <!-- <button id="generateMoreBtn">Generate More Keys</button> -->
+            <button id="generateMoreBtn">ساخت کلید های دیگر</button>
         </div>
-
-
-        <label>
-            <input type="checkbox" id="logCheckbox"> فعال کردن گزارش ها
-        </label>
-        <textarea id="logArea" rows="3" readonly style="width: 100%; resize: none; font-size: 12px; display: none;"></textarea>
-
-        <div class="mycodes">
-            <p>
-                فرآیند ایجاد کلید و بررسی صحت آن ممکن است<br>کمی طول بکشد، لطفا صبور باشید
-            </p>
-            <button id="ShowKeysBtn">کلید های من</button>
-            <div id="generatedCodesContainer" style="display:none;">
-                <h3>:کلیدهای ایجاد شده امروز</h3>
-                <ul id="generatedCodesList"></ul>
-            </div>
+        <div class="footer">
             <a href="https://t.me/Airdrops_GP" target="_blank">
                 <button class="link-btn">گروه پرسش و پاسخ</button>
               </a> <br><br>
-              <small style="color: #999;">در صورت عدم عضویت در کانال اسپانسر، سایت پس از مدتی برای شما مسدود می شود<br>برای دریافت اشتراک نامحدود، با دکمه زیر وارد کانال بشید</small>
+              <small>در صورت عدم عضویت در کانال اسپانسر، سایت پس از مدتی برای شما مسدود می شود<br>برای دریافت اشتراک نامحدود، با دکمه زیر وارد کانال بشید</small>
             
             <button class="buttonvip">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 24">
@@ -86,10 +136,9 @@
                 </svg>
                 <a href="https://t.me/AkhbarHamster/599" target="_blank">عضویت در کانال و دریافت اشتراک ویژه</a>
               </button>
-            
+
         </div>
     </div>
     <script src="script.js"></script>
 </body>
-
 </html>
