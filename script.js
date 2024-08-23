@@ -1,27 +1,51 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const EVENTS_DELAY = 20000;
-    const MAX_KEYS_PER_GAME_PER_DAY = 5;
+    
+    const MAX_KEYS_PER_GAME_PER_DAY = 10;
+    //const EVENTS_DELAY = 20000;
 
     const games = {
         1: {
             name: 'Riding Extreme 3D',
             appToken: 'd28721be-fd2d-4b45-869e-9f253b554e50',
             promoId: '43e35910-c168-4634-ad4f-52fd764a843f',
+            eventsDelay: 22000,
+            attemptsNumber: 22,
         },
         2: {
             name: 'Chain Cube 2048',
             appToken: 'd1690a07-3780-4068-810f-9b5bbf2931b2',
             promoId: 'b4170868-cef0-424f-8eb9-be0622e8e8e3',
+            eventsDelay: 20000,
+            attemptsNumber: 10
         },
         3: {
             name: 'My Clone Army',
             appToken: '74ee0b5b-775e-4bee-974f-63e7f4d5bacb',
             promoId: 'fe693b26-b342-4159-8808-15e3ff7f8767',
+            eventsDelay: 70000,
+            attemptsNumber: 11,
         },
         4: {
             name: 'Train Miner',
             appToken: '82647f43-3f87-402d-88dd-09a90025313f',
             promoId: 'c4480ac7-e178-4973-8061-9ed5b2e17954',
+            eventsDelay: 20000,
+            attemptsNumber: 10,
+        },
+        5: {
+            name: 'MergeAway',
+            appToken: '8d1cc2ad-e097-4b86-90ef-7a27e19fb833',
+            promoId: 'dc128d28-c45b-411c-98ff-ac7726fbaea4',
+            eventsDelay: 20000,
+            attemptsNumber: 10,
+        },
+        6: {
+    name: 'Twerk Race 3D',
+    appToken: '61308365-9d16-4040-8bb0-2f4a4c69074c',
+    promoId: '61308365-9d16-4040-8bb0-2f4a4c69074c',
+            eventsDelay: 20000,
+        attemptsNumber: 10,
+            
         }
     };
 
@@ -38,6 +62,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const generatedKeysTitle = document.getElementById('generatedKeysTitle');
     const gameSelect = document.getElementById('gameSelect');
     const copyStatus = document.getElementById('copyStatus');
+    const previousKeysContainer = document.getElementById('previousKeysContainer');
+    const previousKeysList = document.getElementById('previousKeysList');
     const telegramChannelBtn = document.getElementById('telegramChannelBtn');
 
     const initializeLocalStorage = () => {
@@ -46,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const storageKey = `keys_generated_${game.name}`;
             const storedData = JSON.parse(localStorage.getItem(storageKey));
             if (!storedData || storedData.date !== now) {
-                localStorage.setItem(storageKey, JSON.stringify({ date: now, count: 0 }));
+                localStorage.setItem(storageKey, JSON.stringify({ date: now, count: 0, keys: [] }));
             }
         });
     };
@@ -143,14 +169,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (storedData.count + keyCount > MAX_KEYS_PER_GAME_PER_DAY) {
             alert(`اعتبار باقی مانده: ${MAX_KEYS_PER_GAME_PER_DAY - storedData.count} کلید برای بازی ${game.name} امروز. فردا باز هم میتوانید بسازید`);
+            previousKeysList.innerHTML = storedData.keys.map(key =>
+                `<div class="key-item">
+                    <input type="text" value="${key}" readonly>
+                </div>`
+            ).join('');
+            previousKeysContainer.classList.remove('hidden');
             return;
         }
 
-        keyCountLabel.innerText = `تعداد کلید ها ${keyCount}`;
+        keyCountLabel.innerText = `تعداد کلیدها ${keyCount}`;
 
         progressBar.style.width = '0%';
         progressText.innerText = '0%';
-        progressLog.innerText = '... درحال اتصال به سرور';
+        progressLog.innerText = 'درحال اتصال به سرور \n لطفا صبر کنید';
         progressContainer.classList.remove('hidden');
         keyContainer.classList.add('hidden');
         generatedKeysTitle.classList.add('hidden');
@@ -180,10 +212,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 return null;
             }
 
-            for (let i = 0; i < 11; i++) {
-                await sleep(EVENTS_DELAY * delayRandom());
+            for (let i = 0; i < game.attemptsNumber ; i++) {
+                await sleep(game.eventsDelay * delayRandom());
                 const hasCode = await emulateProgress(clientToken, game.promoId);
-                updateProgress(7 / keyCount, '... درحال استخراج');
+                updateProgress(((100 / game.attemptsNumber) / keyCount), '...درحال استخراج');
                 if (hasCode) {
                     break;
                 }
@@ -191,7 +223,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             try {
                 const key = await generateKey(clientToken, game.promoId);
-                updateProgress(30 / keyCount, 'Generating key...');
+                updateProgress(30 / keyCount, '...درحال استخراج');
                 return key;
             } catch (error) {
                 alert(`Failed to generate key: ${error.message}`);
@@ -205,7 +237,7 @@ document.addEventListener('DOMContentLoaded', () => {
             keysList.innerHTML = keys.filter(key => key).map(key =>
                 `<div class="key-item">
                     <input type="text" value="${key}" readonly>
-                    <button class="copyKeyBtn" data-key="${key}">کپی کلید</button>
+                    <button class="copyKeyBtn" data-key="${key}">کپی</button>
                 </div>`
             ).join('');
             copyAllBtn.classList.remove('hidden');
@@ -213,11 +245,12 @@ document.addEventListener('DOMContentLoaded', () => {
             keysList.innerHTML =
                 `<div class="key-item">
                     <input type="text" value="${keys[0]}" readonly>
-                    <button class="copyKeyBtn" data-key="${keys[0]}">کپی کلید</button>
+                    <button class="copyKeyBtn" data-key="${keys[0]}">کپی</button>
                 </div>`;
         }
 
-        storedData.count += keyCount;
+        storedData.count += keys.filter(key => key).length;
+        storedData.keys.push(...keys.filter(key => key));
         localStorage.setItem(storageKey, JSON.stringify(storedData));
 
         keyContainer.classList.remove('hidden');
@@ -226,46 +259,69 @@ document.addEventListener('DOMContentLoaded', () => {
             button.addEventListener('click', (event) => {
                 const key = event.target.getAttribute('data-key');
                 navigator.clipboard.writeText(key).then(() => {
-                    copyStatus.classList.remove('hidden');
-                    setTimeout(() => copyStatus.classList.add('hidden'), 2000);
+                    copyStatus.innerText = `Copied ${key}`;
+                    setTimeout(() => {
+                        copyStatus.innerText = '';
+                    }, 2000);
+                }).catch(err => {
+                    console.error('Could not copy text: ', err);
                 });
             });
         });
-        copyAllBtn.addEventListener('click', () => {
-            const keysText = keys.filter(key => key).join('\n');
-            navigator.clipboard.writeText(keysText).then(() => {
-                copyStatus.classList.remove('hidden');
-                setTimeout(() => copyStatus.classList.add('hidden'), 2000);
-            });
-        });
 
-        progressBar.style.width = '100%';
-        progressText.innerText = '100%';
-        progressLog.innerText = 'کامل شد';
-
-        startBtn.classList.remove('hidden');
+        startBtn.disabled = false;
         keyCountSelect.classList.remove('hidden');
         gameSelect.classList.remove('hidden');
-        startBtn.disabled = false;
+        startBtn.classList.remove('hidden');
     });
 
-    document.getElementById('generateMoreBtn').addEventListener('click', () => {
-        progressContainer.classList.add('hidden');
-        keyContainer.classList.add('hidden');
-        startBtn.classList.remove('hidden');
-        keyCountSelect.classList.remove('hidden');
-        gameSelect.classList.remove('hidden');
-        generatedKeysTitle.classList.add('hidden');
-        copyAllBtn.classList.add('hidden');
-        keysList.innerHTML = '';
-        keyCountLabel.innerText = 'تعداد کلید ها';
+    copyAllBtn.addEventListener('click', () => {
+        const allKeys = Array.from(document.querySelectorAll('.key-item input')).map(input => input.value).join('\n');
+        navigator.clipboard.writeText(allKeys).then(() => {
+            copyStatus.innerText = 'All keys copied';
+            setTimeout(() => {
+                copyStatus.innerText = '';
+            }, 2000);
+        }).catch(err => {
+            console.error('Could not copy text: ', err);
+        });
     });
 
     document.getElementById('creatorChannelBtn').addEventListener('click', () => {
-        window.open('https://telegram.me/Insta_Buy_Follower', '_blank');
+        window.open('https://telegram.me/Sam_Dm_bot', '_blank');
     });
 
     telegramChannelBtn.addEventListener('click', () => {
-        window.open('https://telegram.me/Sam_Dm_bot', '_blank');
+        window.open('https://telegram.me/Insta_Buy_Follower', '_blank');
     });
+
+    document.getElementById('ShowKeysBtn').addEventListener('click', () => {
+        const generatedCodesContainer = document.getElementById('generatedCodesContainer');
+        const generatedCodesList = document.getElementById('generatedCodesList');
+        generatedCodesList.innerHTML = ''; // Clear the list
+
+        let codesGeneratedToday = [];
+
+        Object.keys(games).forEach(key => {
+            const game = games[key];
+            const storageKey = `keys_generated_${game.name}`;
+            const storedData = JSON.parse(localStorage.getItem(storageKey));
+
+            if (storedData && storedData.keys && storedData.keys.length > 0) {
+                codesGeneratedToday = codesGeneratedToday.concat(storedData.keys.map(code => {
+                    return `<li>${game.name}: ${code}</li>`;
+                }));
+            }
+        });
+
+        if (codesGeneratedToday.length > 0) {
+            generatedCodesList.innerHTML = codesGeneratedToday.join('');
+        } else {
+            generatedCodesList.innerHTML = '<li>No codes generated today.</li>';
+        }
+
+        generatedCodesContainer.style.display = 'block';
+    });
+
+    
 });
