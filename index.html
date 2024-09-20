@@ -1,1 +1,207 @@
-<!DOCTYPE html><html lang="fa"><head>    <meta charset="UTF-8">    <meta name="viewport" content="width=device-width, initial-scale=1.0">    <title>کلیدساز همستر</title>    <link rel="stylesheet" href="style.css">    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700&display=swap" rel="stylesheet"></head><body>    <div class="container">        <h1>کلیدساز همستر</h1>        <div id="gameSelectContainer" class="grid-container">            		<div class="game-option" data-game="12">                <img src="https://cdn.hamsterkombat.io/hide_balls/image.webp" alt="Hide Ball">                <p>پنهان کردن توپ</p>		</div>		<div class="game-option" data-game="11">            <img src="https://cdn.hamsterkombat.io/bouncemasters/image.webp" alt="Bouncemasters">            <p>استادان پرش</p>		</div>            <div class="game-option" data-game="10">                <img src="https://cdn.hamsterkombat.io/stone_age/image.webp" alt="Stone Age">                <p>عصر حجر</p>	    </div>            <div class="game-option" data-game="9">                <img src="https://cdn.hamsterkombat.io/fluff/image.webp" alt="Fluff Crusade">                <p>جنگ بی اهمیت</p>            </div>            <div class="game-option" data-game="8">                <img src="https://cdn.hamsterkombat.io/tile_trio/image.webp" alt="Tile Trio">                <p>کاشی سه تایی</p>            </div>            <div class="game-option" data-game="7">                <img src="https://cdn.hamsterkombat.io/zoopolis/image.webp" alt="Zoopolis">                <p>شهر حیوانات</p>            </div>            <div class="game-option" data-game="6">                <img src="https://cdn.hamsterkombat.io/mow_trim/image.webp" alt="Mow And Trim">                <p>چمن زنی</p>            </div>            <div class="game-option" data-game="5">                <img src="https://cdn.hamsterkombat.io/polysphere/image.webp" alt="Polysphere">                <p>پلی اسفیر</p>            </div>            <div class="game-option" data-game="4">                <img src="https://cdn.hamsterkombat.io/twerk/image.webp" alt="Twerk Race 3D">                <p>مسابقه</p>            </div>            <div class="game-option" data-game="3">                <img src="https://cdn.hamsterkombat.io/merge_away/image.webp" alt="Merge Away">                <p>ادغام کردن</p>            </div>            <div class="game-option" data-game="2">                <img src="https://cdn.hamsterkombat.io/train_miner/image.webp" alt="Train Miner">                <p>معدنچی قطار</p>            </div>            <div class="game-option" data-game="1">                <img src="https://cdn.hamsterkombat.io/chain_cube/image.webp" alt="Chain Cube 2048">                <p>مکعب زنجیره ای</p>            </div>        </div><br><br>        <div class="form-group hidden" id="keyCountGroup">            <label for="keyCountSelect">: انتخاب تعداد کلید</label>            <div id="keyCountSelect" class="key-slider">                <input type="range" min="1" max="8" value="1" id="keyRange">                <span id="keyValue">1</span>            </div>        </div>        <button style="font-family: Vazirmatn, sans-serif;" id="startBtn" class="hidden">ساخت کلید</button>        <div id="progressContainer" class="hidden">            <div class="progress-bar">                <div id="progressBar"></div>            </div>            <p id="progressText">0%</p>            <p id="progressLog">... درحال اتصال به سرور</p>        </div>        <div id="keyContainer" class="hidden">            <h2 id="generatedKeysTitle" class="hidden">کلیدها</h2>            <div id="keysList"></div>            <button style="font-family: Vazirmatn, sans-serif;" id="copyAllBtn" class="hidden">کپی همه</button>        </div>        <div style="display: none;">کانال تلگرام: @AkhbarHamster</div>        <p style="color: #8f8f8f;" id="keyCountLabel">: تعداد کلید</p>        <button style="font-family: Vazirmatn, sans-serif;" id="generateMoreBtn" class="hidden">ساخت کلیدهای بیشتر</button>        <p id="copyStatus" class="hidden">! کپی شد</p>        <br><br>        <div class="footer">            <a href="https://t.me/Airdrops_GP" target="_blank">                <button style="font-family: Vazirmatn, sans-serif;" class="link-btn">گروه پرسش و پاسخ</button>              </a> <br><br>              <small style="color: #8f8f8f;">در صورت عدم عضویت در کانال اسپانسر، سایت پس از مدتی برای شما مسدود می شود<br>برای دریافت اشتراک نامحدود، با دکمه زیر وارد کانال بشید</small><br><br>                        <button style="font-family: Vazirmatn, sans-serif;" class="buttonvip">                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 24">                  <path d="m18 0 8 12 10-8-4 20H4L0 4l10 8 8-12z"></path>                </svg>                <a href="https://t.me/AkhbarHamster/599" target="_blank">عضویت در کانال و دریافت اشتراک ویژه</a>              </button>        </div>            </div>    <script src="script.js"></script></body></html>
+
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>کلیدساز همستر</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <style>
+        /* Style the popup container */
+        .popup-container {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: rgba(0, 0, 0, 0.5);
+        }
+    
+        /* Style the popup content */
+        .popup-content {
+          background-color: #222222;
+          padding: 20px;
+          border-radius: 10px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+          width: 300px;
+          text-align: center;
+        }
+    
+        /* Style the close button */
+        .close-btn {
+          background-color: #ccc;
+          color: #333;
+          border: none;
+          padding: 10px 20px;
+          font-size: 16px;
+          cursor: pointer;
+        }
+    
+        .close-btn:hover {
+          background-color: #aaa;
+        }
+    
+        /* Style the link button */
+        .link-btn {
+          background-color: #007bff;
+          color: #fff;
+          border: none;
+          padding: 10px 20px;
+          font-size: 16px;
+          cursor: pointer;
+        }
+    
+        .link-btn:hover {
+          background-color: #0056b3;
+        }
+      </style>
+        </head>
+        <body>
+          <!-- The popup container -->
+          <div class="popup-container" style="display: none;">
+            <!-- The popup content -->
+            <div class="popup-content">
+              <h2 style="font-family: Vazirmatn, sans-serif; color: #aaa;">توجه</h2>
+              <p style="font-family: Vazirmatn, sans-serif; color: #aaa;">برای دریافت اشتراک نامحدود<br>و همچنین جلوگیری از تداخل کد<br>در کانال تلگرام اسپانسر عضو بشید</p><br>
+              <!-- The close button -->
+              <button style="font-family: Vazirmatn, sans-serif;" class="close-btn" onclick="document.querySelector('.popup-container').style.display = 'none';">انصراف</button>
+              <!-- The link button -->
+              <a href="https://t.me/AkhbarHamster/599" target="_blank">
+                <button style="font-family: Vazirmatn, sans-serif;" class="link-btn">عضویت در کانال</button>
+              </a>
+            </div>
+          </div>
+        
+          <script>
+            // Show the popup when the page loads
+            window.onload = () => {
+              document.querySelector('.popup-container').style.display = 'flex';
+            };
+          </script>
+
+    <div class="container">
+        <h1>کلیدساز همستر</h1>
+        <div id="gameSelectContainer" class="grid-container">
+		<div class="game-option" data-game="17">
+                <img src="https://cdn.hamsterkombat.io/factory_world/image.webp" alt="Factory World">
+                <p>دنیای کارخانه</p>
+            </div>
+	<div class="game-option" data-game="16">
+                <img src="https://cdn.hamsterkombat.io/among_water/image.webp" alt="Among Water">
+                <p>در میان آب</p>
+            </div>
+	<div class="game-option" data-game="15">
+                <img src="https://cdn.hamsterkombat.io/infected_frontier/image.webp" alt="Infected Frontier">
+                <p>مرز آلود</p>
+	</div>
+		<div class="game-option" data-game="14">
+                <img src="https://cdn.hamsterkombat.io/countmasters/image.webp" alt="Count Masters">
+                <p>استاد شمارش</p>
+            </div>
+	<div class="game-option" data-game="13">
+                <img src="https://cdn.hamsterkombat.io/pin_out/image.webp" alt="Pin Out Master">
+                <p>سنجاق استاد</p>
+	</div>
+		<div class="game-option" data-game="12">
+                <img src="https://cdn.hamsterkombat.io/hide_balls/image.webp" alt="Hide Ball">
+                <p>پنهان کردن توپ</p>
+		</div>
+		<div class="game-option" data-game="11">
+            <img src="https://cdn.hamsterkombat.io/bouncemasters/image.webp" alt="Bouncemasters">
+            <p>استادان پرش</p>
+		</div>
+            <div class="game-option" data-game="10">
+                <img src="https://cdn.hamsterkombat.io/stone_age/image.webp" alt="Stone Age">
+                <p>عصر حجر</p>
+	    </div>
+            <div class="game-option" data-game="9">
+                <img src="https://cdn.hamsterkombat.io/fluff/image.webp" alt="Fluff Crusade">
+                <p>جنگ بی اهمیت</p>
+            </div>
+            <div class="game-option" data-game="8">
+                <img src="https://cdn.hamsterkombat.io/tile_trio/image.webp" alt="Tile Trio">
+                <p>کاشی سه تایی</p>
+            </div>
+            <div class="game-option" data-game="7">
+                <img src="https://cdn.hamsterkombat.io/zoopolis/image.webp" alt="Zoopolis">
+                <p>جامعه حیوانات</p>
+            </div>
+            <div class="game-option" data-game="6">
+                <img src="https://cdn.hamsterkombat.io/mow_trim/image.webp" alt="Mow And Trim">
+                <p>چمن زنی</p>
+            </div>
+            <div class="game-option" data-game="5">
+                <img src="https://cdn.hamsterkombat.io/polysphere/image.webp" alt="Polysphere">
+                <p>پلی اسفیر</p>
+            </div>
+            <div class="game-option" data-game="4">
+                <img src="https://cdn.hamsterkombat.io/twerk/image.webp" alt="Twerk Race 3D">
+                <p>مسابقه</p>
+            </div>
+            <div class="game-option" data-game="3">
+                <img src="https://cdn.hamsterkombat.io/merge_away/image.webp" alt="Merge Away">
+                <p>ادغام کردن</p>
+            </div>
+            <div class="game-option" data-game="2">
+                <img src="https://cdn.hamsterkombat.io/train_miner/image.webp" alt="Train Miner">
+                <p>معدنچی قطار</p>
+            </div>
+            <div class="game-option" data-game="1">
+                <img src="https://cdn.hamsterkombat.io/chain_cube/image.webp" alt="Chain Cube 2048">
+                <p>مکعب ذنجیره ای</p>
+            </div>
+        </div><br><br>
+
+        <div class="form-group hidden" id="keyCountGroup">
+            <label for="keyCountSelect">: انتخاب تعداد کلید</label>
+            <div id="keyCountSelect" class="key-slider">
+                <input type="range" min="1" max="8" value="1" id="keyRange">
+                <span id="keyValue">1</span>
+            </div>
+        </div>
+        <button style="font-family: Vazirmatn, sans-serif; background-color: #e02d2d;color: rgb(105, 5, 5);" id="startBtn" class="hidden">ساخت کلید</button>
+        <div id="progressContainer" class="hidden">
+            <div class="progress-bar">
+                <div id="progressBar"></div>
+            </div>
+            <p id="progressText">0%</p>
+            <p id="progressLog">... درحال شروع</p>
+        </div>
+        <div id="keyContainer" class="hidden">
+            <h2 id="generatedKeysTitle" class="hidden">کلیدها</h2>
+            <div id="keysList"></div>
+            <button style="font-family: Vazirmatn, sans-serif; background-color: #e02d2d;color: rgb(105, 5, 5);" id="copyAllBtn" class="hidden">کپی همه</button>
+        </div>
+        <div style="display: none;">@AkhbarHamster</div>
+        <p style="font-family: Vazirmatn, sans-serif;" id="keyCountLabel">: تعداد کلید</p>
+        <button id="generateMoreBtn" class="hidden">ساخت کلیدهای بیشتر</button>
+        <p style="font-family: Vazirmatn, sans-serif;" id="copyStatus" class="hidden">! کپی شد</p>
+        <div class="alert-container">
+
+        <br><br>
+        <div class="footer">
+            <a href="https://t.me/Airdrops_GP" target="_blank">
+                <button style="font-family: Vazirmatn, sans-serif; background-color: #e02d2d;color: rgb(105, 5, 5);" class="link-btn">گروه پرسش و پاسخ</button>
+              </a> <br><br>
+              <small style="color: #8f8f8f;">در صورت عدم عضویت در کانال اسپانسر، سایت پس از مدتی برای شما مسدود می شود<br>برای دریافت اشتراک نامحدود، با دکمه زیر وارد کانال بشید</small><br><br>
+            
+            <button style="font-family: Vazirmatn, sans-serif;"  class="buttonvip">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 24">
+                  <path d="m18 0 8 12 10-8-4 20H4L0 4l10 8 8-12z"></path>
+                </svg>
+                <a href="https://t.me/AkhbarHamster/599" target="_blank">عضویت در کانال و دریافت اشتراک ویژه</a>
+              </button>
+
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
